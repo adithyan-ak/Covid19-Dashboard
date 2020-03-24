@@ -1,0 +1,107 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Covid-19 India</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/pricing/">
+
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+<meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.4/examples/pricing/pricing.css" rel="stylesheet">
+  </head>
+
+
+  <body style="background-color:#343a40;">
+
+    
+    
+<div class="pricing-header px-3 py-3 pt-md-2 pb-md-4 mx-auto text-center">
+  <br>
+  <h1 class="display-4 text-white">Corona Satistics</h1>
+  <div class="spinner-grow text-danger" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+</div>
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Tamilnadu</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">{{total_tamilnadu}} </h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Active : {{active_tamilnadu}}</li>
+          <li>Recovered : {{recovered_tamilnadu}}</li>
+          <li>Dead : {{dead_tamilnadu}}</li>
+        </ul>
+        
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">India</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">{{total_india}}</h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Active : {{active_india}}</li>
+          <li>Recovered : {{recovered_india}}</li>
+          <li>Dead : {{dead_india}}</li>
+        </ul>
+        
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">World</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">{{total_world}}</h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Active : {{world_active_cases}}</li>
+          <li>Recovered : {{total_world_recovered}}</li>
+          <li>Dead : {{total_world_death}}</li>
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+  
+        <small class="text-muted"><center>&copy; Adithyan AK - 2020</center></small>
+  </footer>
+  <br>
+</div>
+</body>
+</html>
