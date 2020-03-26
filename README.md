@@ -2,7 +2,7 @@
 
 <h5 align="center">
   <br>
-  <a href="https://github.com/adithyan-ak/Covid19-Dashboard"><img src="https://i.ibb.co/KW6v9Br/Screenshot.png" alt="Covid19 Live Dashboard"></a>
+  <a href="https://github.com/adithyan-ak/Covid19-Dashboard"><img src="https://i.ibb.co/pvq2BCg/Screenshot.png" alt="Covid19 Live Dashboard"></a>
   <br>
   Covid-19 Dashboard
   <br>
