@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User, auth
 from django.views.decorators.csrf import csrf_exempt
 import requests
+import datetime
 from bs4 import BeautifulSoup
 
 def index(request):
@@ -65,6 +66,54 @@ def index(request):
 
   world_active_cases = world_active[0].text
 
-  return render(request, 'index.html', {'total_india':total_india,'active_india':active_india,'recovered_india':recovered_india,'dead_india':dead_india,'updated_time_india':updated_time_india, 'total_tamilnadu':total_tamilnadu,'active_tamilnadu':active_tamilnadu,'recovered_tamilnadu':recovered_tamilnadu,'dead_tamilnadu':dead_tamilnadu, 'total_world':total_world, 'world_active_cases':world_active_cases, 'total_world_death':total_world_death,'total_world_recovered':total_world_recovered})
 
+  # Daily cases chart
+
+  daily_cases = resp['cases_time_series']
+  tot_length = len(daily_cases)
+
+  today_case = int(resp['key_values'][0]['confirmeddelta'])
+
+  sterday_confirmed = int(daily_cases[tot_length-2]['dailyconfirmed'])
+
+  sterday1_confirmed = int(daily_cases[tot_length-3]['dailyconfirmed'])
+
+  sterday2_confirmed = int(daily_cases[tot_length-4]['dailyconfirmed'])
+
+  sterday3_confirmed = int(daily_cases[tot_length-5]['dailyconfirmed'])
+
+  sterday4_confirmed = int(daily_cases[tot_length-6]['dailyconfirmed'])
+
+# Time calculation 
+
+  tdy = datetime.datetime.today()
+  today = (tdy.strftime("%d")+' '+(tdy.strftime("%B")))
+
+  ster = datetime.datetime.today() - datetime.timedelta(days=1)
+  yesterday = (ster.strftime("%d")+' '+(ster.strftime("%B")))
+
+  ster1 = datetime.datetime.today() - datetime.timedelta(days=2)
+  yesterday1 = (ster1.strftime("%d")+' '+(ster1.strftime("%B")))
+
+  ster2 = datetime.datetime.today() - datetime.timedelta(days=3)
+  yesterday2 = (ster2.strftime("%d")+' '+(ster2.strftime("%B")))
+
+  ster3 = datetime.datetime.today() - datetime.timedelta(days=4)
+  yesterday3 = (ster3.strftime("%d")+' '+(ster3.strftime("%B")))
+
+  ster4 = datetime.datetime.today() - datetime.timedelta(days=5)
+  yesterday4 = (ster4.strftime("%d")+' '+(ster4.strftime("%B")))
+
+
+  # Tamilnadu district wise
+
+  districtwise = requests.get('https://api.covid19india.org/state_district_wise.json')
+
+  districtwise = districtwise.json()
+
+  tn_districts = districtwise['Tamil Nadu']['districtData']
+  tot_districts = len(tn_districts)
+
+
+  return render(request, 'index.html',{'total_india':total_india,'active_india':active_india,'recovered_india':recovered_india,'dead_india':dead_india,'updated_time_india':updated_time_india, 'total_tamilnadu':total_tamilnadu,'active_tamilnadu':active_tamilnadu,'recovered_tamilnadu':recovered_tamilnadu,'dead_tamilnadu':dead_tamilnadu, 'total_world':total_world, 'world_active_cases':world_active_cases, 'total_world_death':total_world_death,'total_world_recovered':total_world_recovered,'today':today,'yesterday':yesterday,'yesterday1':yesterday1,'yesterday2':yesterday2,'yesterday3':yesterday3,'yesterday4':yesterday4,'today_case':today_case,'sterday_confirmed':sterday_confirmed,'sterday1_confirmed':sterday1_confirmed,'sterday2_confirmed':sterday2_confirmed,'sterday3_confirmed':sterday3_confirmed,'sterday4_confirmed':sterday4_confirmed,'tn_districts':tn_districts,'tot_districts':tot_districts})
 
