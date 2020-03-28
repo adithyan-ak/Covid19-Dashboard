@@ -74,15 +74,15 @@ def index(request):
 
   today_case = int(resp['key_values'][0]['confirmeddelta'])
 
-  sterday_confirmed = int(daily_cases[tot_length-2]['dailyconfirmed'])
+  sterday_confirmed = int(daily_cases[tot_length-1]['dailyconfirmed'])
 
-  sterday1_confirmed = int(daily_cases[tot_length-3]['dailyconfirmed'])
+  sterday1_confirmed = int(daily_cases[tot_length-2]['dailyconfirmed'])
 
-  sterday2_confirmed = int(daily_cases[tot_length-4]['dailyconfirmed'])
+  sterday2_confirmed = int(daily_cases[tot_length-3]['dailyconfirmed'])
 
-  sterday3_confirmed = int(daily_cases[tot_length-5]['dailyconfirmed'])
+  sterday3_confirmed = int(daily_cases[tot_length-4]['dailyconfirmed'])
 
-  sterday4_confirmed = int(daily_cases[tot_length-6]['dailyconfirmed'])
+  sterday4_confirmed = int(daily_cases[tot_length-5]['dailyconfirmed'])
 
 # Time calculation 
 
