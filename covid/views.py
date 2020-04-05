@@ -72,7 +72,7 @@ def index(request):
   daily_cases = resp['cases_time_series']
   tot_length = len(daily_cases)
 
-  today_case = int(resp['key_values'][0]['confirmeddelta'])
+  today_case = int(resp['statewise'][0]['confirmeddelta'])
 
   sterday_confirmed = int(daily_cases[tot_length-1]['dailyconfirmed'])
 
