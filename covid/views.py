@@ -112,8 +112,27 @@ def index(request):
   districtwise = districtwise.json()
 
   tn_districts = districtwise['Tamil Nadu']['districtData']
+  
   tot_districts = len(tn_districts)
-
+  t=tn_districts
+  key=0
+  final={}
+  ar=list(t.keys())
+  temp=0
+  while(len(list(t.keys()))!=0):
+	  key=0
+	  ar=list(t.keys())
+	  temp=0
+	  for i in range(len(ar)-1):
+		  for j in range(i+1,len(ar)):
+			  #print(t[ar[i]]['confirmed'])
+			  if t[ar[i]]['confirmed']>temp:
+				  temp=t[ar[i]]['confirmed']
+				  key=i
+	  final[ar[key]]=t[ar[key]]
+	  del t[ar[key]]
+	
+  tn_districts=final
 
   return render(request, 'index.html',{'total_india':total_india,'active_india':active_india,'recovered_india':recovered_india,'dead_india':dead_india,'updated_time_india':updated_time_india, 'total_tamilnadu':total_tamilnadu,'active_tamilnadu':active_tamilnadu,'recovered_tamilnadu':recovered_tamilnadu,'dead_tamilnadu':dead_tamilnadu, 'total_world':total_world, 'world_active_cases':world_active_cases, 'total_world_death':total_world_death,'total_world_recovered':total_world_recovered,'today':today,'yesterday':yesterday,'yesterday1':yesterday1,'yesterday2':yesterday2,'yesterday3':yesterday3,'yesterday4':yesterday4,'today_case':today_case,'sterday_confirmed':sterday_confirmed,'sterday1_confirmed':sterday1_confirmed,'sterday2_confirmed':sterday2_confirmed,'sterday3_confirmed':sterday3_confirmed,'sterday4_confirmed':sterday4_confirmed,'tn_districts':tn_districts,'tot_districts':tot_districts})
 
