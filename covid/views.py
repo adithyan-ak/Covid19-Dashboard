@@ -12,8 +12,6 @@ def index(request):
   
   response = requests.get('https://api.covid19india.org/data.json')
 
-  resp = response.json()
-
  # India count
 
   statewise = resp['statewise']
