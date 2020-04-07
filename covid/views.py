@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User, auth
 from django.views.decorators.csrf import csrf_exempt
-import requests
+import requests, json
 import datetime
 from bs4 import BeautifulSoup
 
@@ -13,6 +13,8 @@ def index(request):
   response = requests.get('https://api.covid19india.org/data.json')
 
  # India count
+
+  resp = response.json()
 
   statewise = resp['statewise']
 
