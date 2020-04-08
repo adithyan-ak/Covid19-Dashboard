@@ -57,6 +57,10 @@ Visit http://127.0.0.1:8000/ in your browser to see the Dashboard.
 
 - Entire team at https://www.covid19india.org
 
+### Contributions
+
+- <a href="https://github.com/Aravindha1234u">Aravindha Hariharan</a>
+
 <h5 align="center">
   <br>
   <a href="https://github.com/adithyan-ak/Covid19-Dashboard"><img src="https://i.ibb.co/n0hQKnq/covidin-herokuapp-com.png" alt="Corona Live Updates Dashboard"></a>
