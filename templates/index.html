@@ -41,8 +41,8 @@
 
   <body style="background-color:#343a40;">
 
-    {% load static %} 
-    
+    {% load static %}
+
 <div class="pricing-header px-3 py-3 pt-md-2 pb-md-4 mx-auto text-center">
   <br>
   <h1 class="display-4 text-white">Corona Live Statistics</h1>
@@ -64,7 +64,7 @@
           <li>Recovered : {{recovered_tamilnadu}}</li>
           <li>Dead : {{dead_tamilnadu}}</li>
         </ul>
-        
+
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -78,7 +78,7 @@
           <li>Recovered : {{recovered_india}}</li>
           <li>Dead : {{dead_india}}</li>
         </ul>
-        
+
       </div>
     </div>
     <div class="card mb-4 shadow-sm">
@@ -92,7 +92,7 @@
           <li>Recovered : {{total_world_recovered}}</li>
           <li>Dead : {{total_world_death}}</li>
         </ul>
-        
+
       </div>
     </div>
   </div>
@@ -103,7 +103,7 @@
   <script>
     Highcharts.chart('container', {
         chart: {
-            type: 'column'
+            type: 'line'
         },
         title: {
             text: 'Covid-19 Growth Rate - India'
@@ -112,27 +112,87 @@
             categories: ['{{yesterday4}}','{{yesterday3}}','{{yesterday2}}',
             '{{yesterday1}}','{{yesterday}}','{{today}}']
         },
-        series: [{
-            name: 'Number of Infections per day',
+        series: [
+        {
+            name: 'Number of Confirmed',
             data: [{{sterday4_confirmed}},{{sterday3_confirmed}}, {{sterday2_confirmed}}, {{sterday1_confirmed}}, {{sterday_confirmed}}, {{today_case}} ]
-        }]
+        },{
+            name: 'Number of Recovered',
+            data: [{{sterday4_recovered}},{{sterday3_recovered}}, {{sterday2_recovered}}, {{sterday1_recovered}}, {{sterday_recovered}}, {{today_recovered}} ]
+        },{
+            name: 'Number of Death',
+            data: [{{sterday4_death}},{{sterday3_death}}, {{sterday2_death}}, {{sterday1_death}}, {{sterday_death}}, {{today_death}} ]
+        }
+        ]
     });
   </script>
+<br>
+
+<div class="card mb-4 shadow-sm">
+  <div class="card-header">
+    <h5 class="my-0 font-weight-normal"><center>India State wise Report</center></h5>
+  </div>
+<br>
+
+<table class="table table-striped table-light">
+<thead>
+<tr>
+  <th scope="col">State</th>
+  <th scope="col">Confirmed</th>
+  <th scope="col">Active</th>
+  <th scope="col">Recovered</th>
+  <th scope="col">Dead</th>
+</tr>
+</thead>
+<tbody>
+{% for key in statewise %}
+<tr>
+  <th scope="row">{{key.state}}</th>
+  <td>{{key.confirmed}}</td>
+  <td>{{key.active}}</td>
+  <td>{{key.recovered}}</td>
+  <td>{{key.deaths}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
 
 <br>
+<br>
+<div id="container1"></div>
+<script src="{% static 'js/highcharts.src.js' %}"></script>
+<script>
+  Highcharts.chart('container1', {
+      chart: {
+          type: 'line'
+      },
+      title: {
+          text: 'TamilNadu Confirmed Cases'
+      },
+      xAxis: {
+          categories: ['{{yesterday4}}','{{yesterday3}}','{{yesterday2}}',
+          '{{yesterday1}}','{{yesterday}}']
+      },
+      series: [{
+          name: 'Number of Infections per day',
+          data: [{{y5}},{{y4}},{{y3}}, {{y2}}, {{y1}}]
+      }]
+  });
+</script>
+<br>
+<br>
+<br>
+
 <div class="card mb-4 shadow-sm">
       <div class="card-header">
         <h5 class="my-0 font-weight-normal"><center>Tamilnadu District wise Report</center></h5>
       </div>
-  
- 
-<br>
-
 <table class="table table-striped table-light">
   <thead>
     <tr>
       <th scope="col"><center>Districts</center></th>
-      <th scope="col"><center>Total</center></th>
+      <th scope="col"><center>Active</center></th>
     </tr>
   </thead>
   <tbody>
@@ -145,11 +205,6 @@
   </tbody>
 </table>
 </div>
-
-  <footer class="pt-4 my-md-5 pt-md-5 border-top">
-  
-        <small class="text-muted"><center>&copy; Adithyan AK - 2020</center></small>
-  </footer>
   <br>
 </div>
 </body>
