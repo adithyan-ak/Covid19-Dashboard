@@ -117,11 +117,11 @@ def index(request):
   state=requests.get("https://api.covid19india.org/states_daily.json")
   s=state.json()
   s=s['states_daily']
-  y1=int(s[len(s) -1]['tn'])
-  y2=int(s[len(s) -2]['tn'])
-  y3=int(s[len(s) -3]['tn'])
-  y4=int(s[len(s) -4]['tn'])
-  y5=int(s[len(s) -5]['tn'])
+  y1=int(s[-3]['tn'])
+  y2=int(s[-6]['tn'])
+  y3=int(s[-9]['tn'])
+  y4=int(s[-12]['tn'])
+  y5=int(s[-15]['tn'])
 
 # Time calculation
 
