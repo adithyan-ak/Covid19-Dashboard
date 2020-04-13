@@ -73,43 +73,43 @@ def index(request):
 
   last_updated_time = resp['statewise'][0]['lastupdatedtime']
 
-  today_case = int(resp['statewise'][0]['deltaconfirmed'])
+  today_case = int(resp['cases_time_series'][tot_length-1]['dailyconfirmed'])
 
-  sterday_confirmed = int(daily_cases[tot_length-1]['dailyconfirmed'])
+  sterday_confirmed = int(daily_cases[tot_length-2]['dailyconfirmed'])
 
-  sterday1_confirmed = int(daily_cases[tot_length-2]['dailyconfirmed'])
+  sterday1_confirmed = int(daily_cases[tot_length-3]['dailyconfirmed'])
 
-  sterday2_confirmed = int(daily_cases[tot_length-3]['dailyconfirmed'])
+  sterday2_confirmed = int(daily_cases[tot_length-4]['dailyconfirmed'])
 
-  sterday3_confirmed = int(daily_cases[tot_length-4]['dailyconfirmed'])
+  sterday3_confirmed = int(daily_cases[tot_length-5]['dailyconfirmed'])
 
-  sterday4_confirmed = int(daily_cases[tot_length-5]['dailyconfirmed'])
+  sterday4_confirmed = int(daily_cases[tot_length-6]['dailyconfirmed'])
 
   #--------------------------------------------------------------------------
-  today_death = int(resp['statewise'][0]['deltadeaths'])
+  today_death = int(resp['cases_time_series'][tot_length-1]['dailydeceased'])
 
-  sterday_death = int(daily_cases[tot_length-1]['dailydeceased'])
+  sterday_death = int(daily_cases[tot_length-2]['dailydeceased'])
 
-  sterday1_death = int(daily_cases[tot_length-2]['dailydeceased'])
+  sterday1_death = int(daily_cases[tot_length-3]['dailydeceased'])
 
-  sterday2_death = int(daily_cases[tot_length-3]['dailydeceased'])
+  sterday2_death = int(daily_cases[tot_length-4]['dailydeceased'])
 
-  sterday3_death = int(daily_cases[tot_length-4]['dailydeceased'])
+  sterday3_death = int(daily_cases[tot_length-5]['dailydeceased'])
 
-  sterday4_death = int(daily_cases[tot_length-5]['dailydeceased'])
+  sterday4_death = int(daily_cases[tot_length-6]['dailydeceased'])
 
    #--------------------------------------------------------------------------
-  today_recovered = int(resp['statewise'][0]['deltarecovered'])
+  today_recovered = int(resp['cases_time_series'][tot_length-1]['dailyrecovered'])
 
-  sterday_recovered = int(daily_cases[tot_length-1]['dailyrecovered'])
+  sterday_recovered = int(daily_cases[tot_length-2]['dailyrecovered'])
 
-  sterday1_recovered = int(daily_cases[tot_length-2]['dailyrecovered'])
+  sterday1_recovered = int(daily_cases[tot_length-3]['dailyrecovered'])
 
-  sterday2_recovered = int(daily_cases[tot_length-3]['dailyrecovered'])
+  sterday2_recovered = int(daily_cases[tot_length-4]['dailyrecovered'])
 
-  sterday3_recovered = int(daily_cases[tot_length-4]['dailyrecovered'])
+  sterday3_recovered = int(daily_cases[tot_length-5]['dailyrecovered'])
 
-  sterday4_recovered = int(daily_cases[tot_length-5]['dailyrecovered'])
+  sterday4_recovered = int(daily_cases[tot_length-6]['dailyrecovered'])
 
  #--------------------------------------------------------------------------
 
@@ -117,11 +117,12 @@ def index(request):
   state=requests.get("https://api.covid19india.org/states_daily.json")
   s=state.json()
   s=s['states_daily']
-  y1=int(s[-3]['tn'])
-  y2=int(s[-6]['tn'])
-  y3=int(s[-9]['tn'])
-  y4=int(s[-12]['tn'])
-  y5=int(s[-15]['tn'])
+  tdy_case=s[-3]['tn']
+  y1=s[-6]['tn']
+  y2=s[-9]['tn']
+  y3=s[-12]['tn']
+  y4=s[-15]['tn']
+  y5=s[-18]['tn']
 
 # Time calculation
 
@@ -188,4 +189,4 @@ def index(request):
   return render(request, 'index.html',{'total_india':total_india,'active_india':active_india,'recovered_india':recovered_india,'dead_india':dead_india,'updated_time_india':updated_time_india, 'total_tamilnadu':total_tamilnadu,'active_tamilnadu':active_tamilnadu,'recovered_tamilnadu':recovered_tamilnadu,'dead_tamilnadu':dead_tamilnadu, 'total_world':total_world, 'world_active_cases':world_active_cases, 'total_world_death':total_world_death,'total_world_recovered':total_world_recovered,'today':today,'yesterday':yesterday,'yesterday1':yesterday1,'yesterday2':yesterday2,'yesterday3':yesterday3,'yesterday4':yesterday4,'today_case':today_case,'sterday_confirmed':sterday_confirmed,'sterday1_confirmed':sterday1_confirmed,'sterday2_confirmed':sterday2_confirmed,'sterday3_confirmed':sterday3_confirmed,'sterday4_confirmed':sterday4_confirmed,'tn_districts':tn_districts,
   'sterday_recovered':sterday_recovered,'sterday1_recovered':sterday1_recovered,'sterday2_recovered':sterday2_recovered,'sterday3_recovered':sterday3_recovered,'sterday4_recovered':sterday4_recovered,'today_recovered':today_recovered,
   'sterday_death':sterday_death,'sterday1_death':sterday1_death,'sterday2_death':sterday2_death,'sterday3_death':sterday3_death,'sterday4_death':sterday4_death,'today_death':today_death,
-  'y1':y1,'y2':y2,'y3':y3,'y4':y4,'y5':y5,'statewise':statewise})
+  'tdy_case':tdy_case,'y1':y1,'y2':y2,'y3':y3,'y4':y4,'y5':y5,'statewise':statewise})

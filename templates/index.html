@@ -172,12 +172,11 @@
           text: 'TamilNadu Confirmed Cases'
       },
       xAxis: {
-          categories: ['{{yesterday4}}','{{yesterday3}}','{{yesterday2}}',
-          '{{yesterday1}}','{{yesterday}}']
+          categories: ['{{yesterday4}}','{{yesterday3}}','{{yesterday2}}','{{yesterday1}}','{{yesterday}}','{{today}}']
       },
       series: [{
           name: 'Number of Infections per day',
-          data: [{{y5}},{{y4}},{{y3}}, {{y2}}, {{y1}}]
+          data: [{{y5}},{{y4}},{{y3}}, {{y2}}, {{y1}}, {{tdy_case}}]
       }]
   });
 </script>
