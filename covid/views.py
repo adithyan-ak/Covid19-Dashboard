@@ -73,43 +73,43 @@ def index(request):
 
   last_updated_time = resp['statewise'][0]['lastupdatedtime']
 
-  today_case = int(resp['cases_time_series'][tot_length-1]['dailyconfirmed'])
+  today_case = int(resp['statewise'][0]['deltaconfirmed'])
 
-  sterday_confirmed = int(daily_cases[tot_length-2]['dailyconfirmed'])
+  sterday_confirmed = int(daily_cases[tot_length-1]['dailyconfirmed'])
 
-  sterday1_confirmed = int(daily_cases[tot_length-3]['dailyconfirmed'])
+  sterday1_confirmed = int(daily_cases[tot_length-2]['dailyconfirmed'])
 
-  sterday2_confirmed = int(daily_cases[tot_length-4]['dailyconfirmed'])
+  sterday2_confirmed = int(daily_cases[tot_length-3]['dailyconfirmed'])
 
-  sterday3_confirmed = int(daily_cases[tot_length-5]['dailyconfirmed'])
+  sterday3_confirmed = int(daily_cases[tot_length-4]['dailyconfirmed'])
 
-  sterday4_confirmed = int(daily_cases[tot_length-6]['dailyconfirmed'])
+  sterday4_confirmed = int(daily_cases[tot_length-5]['dailyconfirmed'])
 
   #--------------------------------------------------------------------------
-  today_death = int(resp['cases_time_series'][tot_length-1]['dailydeceased'])
+  today_death = int(resp['statewise'][0]['deltadeaths'])
 
-  sterday_death = int(daily_cases[tot_length-2]['dailydeceased'])
+  sterday_death = int(daily_cases[tot_length-1]['dailydeceased'])
 
-  sterday1_death = int(daily_cases[tot_length-3]['dailydeceased'])
+  sterday1_death = int(daily_cases[tot_length-2]['dailydeceased'])
 
-  sterday2_death = int(daily_cases[tot_length-4]['dailydeceased'])
+  sterday2_death = int(daily_cases[tot_length-3]['dailydeceased'])
 
-  sterday3_death = int(daily_cases[tot_length-5]['dailydeceased'])
+  sterday3_death = int(daily_cases[tot_length-4]['dailydeceased'])
 
-  sterday4_death = int(daily_cases[tot_length-6]['dailydeceased'])
+  sterday4_death = int(daily_cases[tot_length-5]['dailydeceased'])
 
    #--------------------------------------------------------------------------
-  today_recovered = int(resp['cases_time_series'][tot_length-1]['dailyrecovered'])
+  today_recovered = int(resp['statewise'][0]['deltarecovered'])
 
-  sterday_recovered = int(daily_cases[tot_length-2]['dailyrecovered'])
+  sterday_recovered = int(daily_cases[tot_length-1]['dailyrecovered'])
 
-  sterday1_recovered = int(daily_cases[tot_length-3]['dailyrecovered'])
+  sterday1_recovered = int(daily_cases[tot_length-2]['dailyrecovered'])
 
-  sterday2_recovered = int(daily_cases[tot_length-4]['dailyrecovered'])
+  sterday2_recovered = int(daily_cases[tot_length-3]['dailyrecovered'])
 
-  sterday3_recovered = int(daily_cases[tot_length-5]['dailyrecovered'])
+  sterday3_recovered = int(daily_cases[tot_length-4]['dailyrecovered'])
 
-  sterday4_recovered = int(daily_cases[tot_length-6]['dailyrecovered'])
+  sterday4_recovered = int(daily_cases[tot_length-5]['dailyrecovered'])
 
  #--------------------------------------------------------------------------
 
@@ -117,12 +117,12 @@ def index(request):
   state=requests.get("https://api.covid19india.org/states_daily.json")
   s=state.json()
   s=s['states_daily']
-  tdy_case=s[-3]['tn']
-  y1=s[-6]['tn']
-  y2=s[-9]['tn']
-  y3=s[-12]['tn']
-  y4=s[-15]['tn']
-  y5=s[-18]['tn']
+  tdy_case=int(resp['statewise'][ind]['deltaconfirmed'])
+  y1=s[-3]['tn']
+  y2=s[-6]['tn']
+  y3=s[-9]['tn']
+  y4=s[-12]['tn']
+  y5=s[-15]['tn']
 
 # Time calculation
 
